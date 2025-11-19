@@ -1,0 +1,11 @@
+fastapi[standard]
+sqlalchemy
+pydantic_settings
+psycopg
+psycopg2
+psycopg_binary
+jwt
+pyjwt
+passlib
+bcrypt
+pytest
