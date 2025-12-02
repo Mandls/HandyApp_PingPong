@@ -13,6 +13,13 @@ async def get_matches():
         raise HTTPException(status_code=404, detail="No Matches played")
     return result
 
+@router.get("/sorted/", response_model= List[MatchesUpdate])
+async def get_matches_sorted():
+    result = crud_matches.get_matches_sorted()
+    if not result:
+        raise HTTPException(status_code=404, detail="No Matches played")
+    return result
+
 @router.post("/create_match/")
 async def create_match(match: MatchBaseCreate):
     result = crud_matches.create_match(match=match)
