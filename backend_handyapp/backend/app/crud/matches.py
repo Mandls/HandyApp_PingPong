@@ -1,5 +1,5 @@
 from app.core.supabase import supabase
-from app.schemas.matches import MatchBaseCreate, MatchesUpdate
+from app.schemas.matches import MatchBaseCreate, MatchesUpdate, MatchBaseRead
 from datetime import datetime, timedelta
 
 def get_matches():
@@ -21,6 +21,6 @@ def get_matches_sorted():
     
     return matches
 
-def create_match(match: MatchBaseCreate):
-    response = supabase.table("matches").insert(match.dict()).execute()
+def create_match(match_data: dict):
+    response = supabase.table("matches").insert(match_data).execute()
     return response.data[0] if response.data else None

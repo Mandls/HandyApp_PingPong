@@ -2,15 +2,21 @@ from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
 
-class MatchBaseCreate(BaseModel):
+class MatchBaseRead(BaseModel):
     name: str
     player_1_name: str
     player_2_name: str
     score_1: int
     score_2: int
-    status: str
+
+class MatchBaseCreate(BaseModel):
+    score_1: int
+    score_2: int
 
 class MatchesUpdate(MatchBaseCreate):
     id: int
     registered_at: datetime
-    updated_at: Optional[datetime]
+
+class PlayerUpdate(BaseModel):
+    player_1: str
+    player_2: str
